@@ -29,7 +29,7 @@ Le code contient volontairement :
 
 ---
 
-# 🛠️ 3. Préparation du projet
+#  3. Préparation du projet
 
 ```bash
 git clone https://github.com/.../mini-api-catalogue.git
@@ -40,7 +40,7 @@ npm run dev
 
 ---
 
-# 🌿 4. Création d’une branche de fonctionnalité
+#  4. Création d’une branche de fonctionnalité
 
 ```bash
 git checkout -b feature/ajout-endpoint
@@ -59,7 +59,7 @@ Réalisez une amélioration simple :
 
 ---
 
-# 💾 6. Commit & Push
+#  6. Commit & Push
 
 ```bash
 git add .
@@ -69,7 +69,7 @@ git push origin feature/ajout-endpoint
 
 ---
 
-# 🔀 7. Création de la Pull Request
+#  7. Création de la Pull Request
 
 Sur GitHub :
 - New Pull Request
@@ -80,7 +80,7 @@ Sur GitHub :
 
 ---
 
-# 👀 8. Travail du Reviewer
+#  8. Travail du Reviewer
 
 Le reviewer vérifie :
 - Qualité du code
@@ -95,7 +95,7 @@ Il ajoute :
 
 ---
 
-# 🔁 9. Corrections et mise à jour
+#  9. Corrections et mise à jour
 
 ```bash
 git add .
@@ -111,7 +111,7 @@ git push
 
 ---
 
-# 🔄 11. Inversion des rôles
+#  11. Inversion des rôles
 Le reviewer devient auteur  
 L’auteur devient reviewer  
 Répétez les étapes 4 → 10
@@ -120,7 +120,7 @@ Répétez les étapes 4 → 10
 
 #  12. Mini-TP Python (Tests)
 
-## 🎯 Objectifs :
+##  Objectifs :
 - Écrire 3 petites fonctions Python
 - Ajouter un fichier `test.py`
 - Tester avec `assert`
