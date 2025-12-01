@@ -1,11 +1,11 @@
-# 🧪 TP1 – Manipulation des branches, commits, push et fusion avec Git
+#  TP1 – Manipulation des branches, commits, push et fusion avec Git
 
 Ce TP vous permet de pratiquer les bases essentielles de Git :
 **commits, branches, push, merge et organisation du code**.
 
 ---
 
-## 🚀 1. Travail sur la branche `main`
+##  1. Travail sur la branche `main`
 
 ### **1.1 Créer le fichier `code.py`**
 ```python
@@ -32,7 +32,7 @@ git push origin main
 
 ---
 
-## 🌿 2. Création d’une nouvelle branche : `refonte`
+##  2. Création d’une nouvelle branche : `refonte`
 
 ### **2.1 Créer et basculer sur la branche**
 ```bash
@@ -41,7 +41,7 @@ git checkout -b refonte
 
 ---
 
-## 🛠️ 3. Ajout d’un module dans la branche `refonte`
+##  3. Ajout d’un module dans la branche `refonte`
 
 ### **3.1 Créer un fichier `module.py`**
 ```python
@@ -90,7 +90,7 @@ git push origin main
 
 ---
 
-## 🧹 5. (Optionnel) Suppression de la branche `refonte`
+##  5. (Optionnel) Suppression de la branche `refonte`
 
 ### **5.1 Supprimer localement**
 ```bash
@@ -104,12 +104,4 @@ git push origin --delete refonte
 
 ---
 
-# 🎉 TP1 terminé !
 
-Vous avez appris à :
-- créer un fichier versionné
-- faire des commits
-- créer et utiliser des branches
-- modifier du code dans plusieurs branches
-- fusionner une branche dans `main`
-- pousser et nettoyer les branches
