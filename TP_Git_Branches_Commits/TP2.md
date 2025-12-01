@@ -1,107 +1,137 @@
-#  TP1 – Manipulation des branches, commits, push et fusion avec Git
+# 🧪 TP2 – Création et résolution d’un conflit de merge avec Git
 
-Ce TP vous permet de pratiquer les bases essentielles de Git :
-**commits, branches, push, merge et organisation du code**.
+Ce TP vous permet de provoquer volontairement un **conflit Git**, de l’observer et de le résoudre dans le même dépôt utilisé pour le TP1.
 
 ---
 
-##  1. Travail sur la branche `main`
+##  1. Vérifier l’état du dépôt
 
-### **1.1 Créer le fichier `code.py`**
-```python
-from datetime import datetime
+Assurez-vous que votre dépôt est propre :
 
-print("Hello ! Il est {}.".format(datetime.now().strftime("%H:%M:%S")))
+```bash
+git status
 ```
 
-### **1.2 Ajouter et committer**
+S’il reste des modifications non commit :
+```bash
+git add .
+git commit -m "Sauvegarde avant conflit"
+```
+
+Ou pour mettre de côté :
+```bash
+git stash
+```
+
+---
+
+##  2. Créer une première branche `conflit-a`
+
+```bash
+git checkout -b conflit-a
+```
+
+Modifier le fichier **code.py** (version A du conflit) :
+
+```python
+print("Version A du code")
+```
+
+Commit :
+
 ```bash
 git add code.py
-git commit -m "Ajout du fichier code.py"
-```
-
-### **1.3 Afficher l’historique**
-```bash
-git log
-```
-
-### **1.4 Envoyer sur GitHub**
-```bash
-git push origin main
+git commit -m "Modification version A"
 ```
 
 ---
 
-##  2. Création d’une nouvelle branche : `refonte`
+##  3. Retour sur `main`
 
-### **2.1 Créer et basculer sur la branche**
-```bash
-git checkout -b refonte
-```
-
----
-
-##  3. Ajout d’un module dans la branche `refonte`
-
-### **3.1 Créer un fichier `module.py`**
-```python
-from datetime import datetime
-
-def obtenir_temps():
-    return "Hello ! Il est {}.".format(datetime.now().strftime("%H:%M:%S"))
-```
-
-### **3.2 Modifier le fichier `code.py`**
-```python
-from module import obtenir_temps
-
-print(obtenir_temps())
-```
-
-### **3.3 Committer les modifications**
-```bash
-git add module.py code.py
-git commit -m "Ajout du module et mise à jour du code"
-```
-
-### **3.4 Envoyer la branche sur GitHub**
-```bash
-git push origin refonte
-```
-
----
-
-## 🔀 4. Fusion de la branche `refonte` dans `main`
-
-### **4.1 Retourner sur `main`**
 ```bash
 git checkout main
 ```
 
-### **4.2 Fusionner la branche**
+---
+
+##  4. Créer une deuxième branche `conflit-b`
+
 ```bash
-git merge refonte
+git checkout -b conflit-b
 ```
 
-### **4.3 Envoyer la branche principale mise à jour**
+Modifier **code.py** différemment (version B du conflit) :
+
+```python
+print("Version B du code")
+```
+
+Commit :
+
 ```bash
+git add code.py
+git commit -m "Modification version B"
+```
+
+---
+
+##  5. Fusionner la première branche dans `main`
+
+```bash
+git checkout main
+git merge conflit-a
+```
+
+La fusion fonctionne sans conflit.
+
+---
+
+##  6. Fusionner la branche `conflit-b` (conflit garanti)
+
+```bash
+git merge conflit-b
+```
+
+Message attendu :
+
+```
+Auto-merging code.py
+CONFLICT (content): Merge conflict in code.py
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+---
+
+##  7. Observer le conflit
+
+Ouvrir **code.py** :
+
+```txt
+<<<<<<< HEAD
+print("Version A du code")
+=======
+print("Version B du code")
+>>>>>>> conflit-b
+```
+
+Ces marqueurs indiquent le conflit.
+
+---
+
+##  8. Résoudre le conflit
+
+Choisir une version finale (par exemple) :
+
+```python
+print("Version finale du code après résolution du conflit")
+```
+
+Valider la résolution :
+
+```bash
+git add code.py
+git commit -m "Résolution du conflit entre conflit-a et conflit-b"
 git push origin main
 ```
-
----
-
-##  5. (Optionnel) Suppression de la branche `refonte`
-
-### **5.1 Supprimer localement**
-```bash
-git branch -d refonte
-```
-
-### **5.2 Supprimer sur GitHub (si elle existe)**
-```bash
-git push origin --delete refonte
-```
-
----
 
 
