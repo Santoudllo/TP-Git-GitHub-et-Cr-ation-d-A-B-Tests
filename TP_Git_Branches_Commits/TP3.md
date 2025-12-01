@@ -1,70 +1,108 @@
-#  TP GitHub & Collaboration — Revue de Code + Mini-TP Python (Tests)
-
-##  Objectifs du TP
-- Collaborer via GitHub (branches, PR, reviews)
-- Améliorer un projet Node.js existant
-- Réaliser une revue de code structurée
-- Produire et corriger une Pull Request
-- Introduire la logique des tests (Python) avant l’A/B Testing
+#  TP Final — GitHub, Collaboration & Revue de Code  
+## Mini-API Catalogue (Node.js / Express) + Mini-TP Python
 
 ---
 
-#  1. Contexte du projet : Mini-API Catalogue
-API Node.js / Express composée de deux endpoints :
-- `/products`
-- `/categories`
+#  Objectifs pédagogiques
 
-Le code contient volontairement :
-- duplications de logique
-- absence de validation
-- erreurs HTTP
-- structure perfectible
+Ce TP vous permet de pratiquer de manière professionnelle :
 
----
-
-#  2. Travail en binôme
-- 1 auteur + 1 reviewer
-- Dépôt GitHub partagé
-- Vous échangez les rôles à mi-parcours
+- la collaboration via GitHub (branches, PR, review)  
+- l’amélioration d’un projet Node.js existant  
+- la détection d’erreurs dans un code volontairement imparfait  
+- la création et gestion de Pull Requests  
+- la revue de code constructive  
+- l’écriture de tests Python (transition vers l’A/B Testing)
 
 ---
 
-#  3. Préparation du projet
+#  1. Récupération du projet
+
+
+Cloner le projet :
 
 ```bash
-git clone https://github.com/.../mini-api-catalogue.git
+git clone https://github.com/<organisation>/mini-api-catalogue.git
 cd mini-api-catalogue
+```
+
+Installer les dépendances :
+
+```bash
 npm install
 npm run dev
 ```
 
+Vérifier que l’API fonctionne.
+
 ---
 
-#  4. Création d’une branche de fonctionnalité
+#  2. Travail en binôme
+
+- Un **Auteur** : réalise la modification + crée la PR  
+- Un **Reviewer** : analyse la PR + donne un feedback  
+- Vous échangerez les rôles à la moitié du TP
+
+Chaque binôme travaille dans le **même dépôt GitHub**.
+
+---
+
+#  3. Création d’une branche de fonctionnalité
+
+À partir de `main` :
 
 ```bash
-git checkout -b feature/ajout-endpoint
+git checkout -b feature/<amelioration>
 ```
 
----
-
-#  5. Modification à effectuer (Auteur)
-
-Réalisez une amélioration simple :
-- Ajouter une validation
-- Ajouter un test
-- Corriger un code HTTP incohérent
-- Factoriser une logique dupliquée
-- Corriger un bug simple
+Exemples de noms :  
+- `feature/correction-status-code`  
+- `feature/validation-products`  
+- `feature/clean-duplicate-code`
 
 ---
 
-#  6. Commit & Push
+#  4. Analyse du code (obligatoire)
+
+Dans le dépôt se trouvent volontairement :
+
+- codes HTTP incorrects  
+- duplications de logique  
+- manque de validations  
+- messages d’erreurs incohérents  
+- structure imparfaite des routes  
+- absence de middleware d’erreurs  
+
+**Votre but : choisir UNE amélioration simple et ciblée.**
+
+---
+
+#  5. Amélioration à effectuer (Auteur)
+
+Réaliser UNE amélioration, par exemple :
+
+### ✔ Ajout d’une validation
+Ex : vérifier qu’un produit a bien un `name`.
+
+### ✔ Correction d’un code HTTP
+Ex : changer un `500` en `404`, un `200` en `201`, etc.
+
+### ✔ Refactorisation d’une duplication
+Ex : extraire une fonction commune.
+
+### ✔ Correction d’une mauvaise logique
+Ex : erreur dans `/categories/:id`.
+
+>  **Eviter les gros changements : privilégier une PR simple et propre.**
+
+---
+
+#  6. Commit + Push
 
 ```bash
 git add .
-git commit -m "Ajout validation sur POST /products"
-git push origin feature/ajout-endpoint
+git commit -m "Correction du code HTTP pour GET /products/:id"
+git push origin feature/<amelioration>
 ```
 
 ---
@@ -72,63 +110,75 @@ git push origin feature/ajout-endpoint
 #  7. Création de la Pull Request
 
 Sur GitHub :
-- New Pull Request
-- Base : `main`
-- Compare : `feature/...`
-- Ajouter un titre clair + description détaillée
-- Assigner un reviewer
+
+1. Aller dans **Pull Requests**  
+2. Cliquer sur **New Pull Request**  
+3. Base : `main`  
+   Compare : `feature/<amelioration>`  
+4. Remplir :
+   - **Titre clair**
+   - **Description complète**
+   - Pourquoi cette correction ?
+   - Comment la tester ?
+5. Assigner votre reviewer
 
 ---
 
-#  8. Travail du Reviewer
+#  8. Revue de code (Reviewer)
 
-Le reviewer vérifie :
-- Qualité du code
-- Logique
-- Risques de bug
-- Style et conventions
+Le reviewer doit vérifier :
 
-Il ajoute :
-- Commentaires
-- Suggestions
-- Demandes de modifications
+- la logique  
+- la cohérence  
+- le style  
+- l’absence de bug  
+- la bonne pratique Git  
+
+Et ajouter :
+
+- commentaires  
+- suggestions  
+- demandes de correction si nécessaire
+
+Faire preuve de **bienveillance + exigence**.
 
 ---
 
-#  9. Corrections et mise à jour
+#  9. Corrections (Auteur)
+
+L’auteur applique les retours :
 
 ```bash
 git add .
-git commit -m "Corrections suite aux retours du reviewer"
+git commit -m "Corrections suite aux commentaires"
 git push
 ```
 
+La PR se met à jour automatiquement.
+
 ---
 
-#  10. Validation & fusion
-- Merge Pull Request
-- Supprimer la branche (optionnel)
+#  10. Validation & Merge
+
+Quand la PR est approuvée :
+
+- cliquer **Merge Pull Request**  
+- supprimer la branche (optionnel)
 
 ---
 
 #  11. Inversion des rôles
-Le reviewer devient auteur  
-L’auteur devient reviewer  
-Répétez les étapes 4 → 10
+
+Le reviewer devient Auteur.  
+L’Auteur devient Reviewer.
+
+Refaire les étapes **3 à 10** avec une autre amélioration.
 
 ---
 
-#  12. Mini-TP Python (Tests)
+#  12. Mini-TP Python — Écriture de tests
 
-##  Objectifs :
-- Écrire 3 petites fonctions Python
-- Ajouter un fichier `test.py`
-- Tester avec `assert`
-- Push → PR → review
-
----
-
-### 12.1 Créer un fichier `operations.py`
+Créer un fichier `operations.py` :
 
 ```python
 def addition(a, b):
@@ -141,9 +191,7 @@ def format_nom(prenom, nom):
     return f"{prenom.capitalize()} {nom.upper()}"
 ```
 
----
-
-### 12.2 Créer un fichier `test.py`
+Créer un fichier `test.py` :
 
 ```python
 from operations import addition, maximum, format_nom
@@ -160,27 +208,23 @@ def test_format_nom():
 print("Tous les tests sont passés !")
 ```
 
----
-
-### 12.3 Exécuter les tests
+Lancer les tests :
 
 ```bash
 python test.py
 ```
 
----
-
-### 12.4 Envoyer via PR
+Créer une PR contenant les tests Python :
 
 ```bash
 git checkout -b feature/tests-python
 git add .
-git commit -m "Ajout tests Python"
+git commit -m "Ajout des tests Python"
 git push origin feature/tests-python
 ```
 
-Ouvrir une PR puis faire une review croisée.
-
 ---
+
+
 
 
