@@ -1,156 +1,182 @@
-#  TP Final — GitHub, Collaboration & Revue de Code  
-## Mini-API Catalogue (Node.js / Express) + Mini-TP Python
+
+# TP3 — Création d’une API Node.js + Collaboration GitHub + Tests Python
+
+##  Objectifs pédagogiques
+- Construire une API Node.js avec une structure professionnelle.
+- Collaborer via GitHub : branches, Pull Requests, revue de code.
+- Améliorer et corriger du code existant.
+- Écrire des tests simples en Python.
+- Documenter correctement une API.
 
 ---
 
-#  Objectifs pédagogiques
+#  PARTIE 1 — Création d’une API Node.js
 
-Ce TP vous permet de pratiquer de manière professionnelle :
+## 1. Structure du projet à créer
 
-- la collaboration via GitHub (branches, PR, review)  
-- l’amélioration d’un projet Node.js existant  
-- la détection d’erreurs dans un code volontairement imparfait  
-- la création et gestion de Pull Requests  
-- la revue de code constructive  
-- l’écriture de tests Python (transition vers l’A/B Testing)
+Reproduisez la structure suivante :
+
+```
+mini-api-catalogue/
+│
+├── data/
+│   ├── categories.json
+│   └── products.json
+│
+├── routes/
+│   ├── categories.js
+│   └── products.js
+│
+├── server.js
+├── package.json
+└── README.md
+```
+
+## 2. Description des dossiers
+
+###  data/
+Mini base de données en JSON :
+- `categories.json`
+- `products.json`
+
+###  routes/
+Contient les fichiers de définition des endpoints :
+- `categories.js`
+- `products.js`
+
+###  server.js
+Point d’entrée de l’API :
+- configuration du serveur  
+- chargement des routes  
+- lancement sur un port  
+
+### 📄 package.json
+Créé via `npm init`, contient dépendances & scripts.
+
+### 📄 README.md
+Documentation : installation, lancement, liste des endpoints.
 
 ---
 
-#  1. Récupération du projet
+## 3. Étapes pour créer l’API
 
-
-Cloner le projet :
-
-```bash
-git clone https://github.com/<organisation>/mini-api-catalogue.git
+1. Créer le dossier :
+```
+mkdir mini-api-catalogue
 cd mini-api-catalogue
 ```
 
-Installer les dépendances :
-
-```bash
-npm install
-npm run dev
+2. Créer les dossiers :
+```
+mkdir data
+mkdir routes
 ```
 
-Vérifier que l’API fonctionne.
+3. Créer les fichiers vides :
+```
+server.js
+README.md
+data/categories.json
+data/products.json
+routes/categories.js
+routes/products.js
+```
 
 ---
 
-#  2. Travail en binôme
+## 4. Travail demandé 
 
-- Un **Auteur** : réalise la modification + crée la PR  
-- Un **Reviewer** : analyse la PR + donne un feedback  
-- Vous échangerez les rôles à la moitié du TP
-
-Chaque binôme travaille dans le **même dépôt GitHub**.
+- Ajouter quelques données dans les fichiers JSON.
+- Programmer les endpoints CRUD dans les routes.
+- Configurer `server.js`.
+- Documenter l’API dans `README.md`.
 
 ---
 
-#  3. Création d’une branche de fonctionnalité
+#  PARTIE 2 — Collaboration GitHub (Binôme)
 
-À partir de `main` :
+## 1. Rôles
+- **Auteur** : réalise une amélioration + crée une PR.
+- **Reviewer** : analyse la PR + commente + demande corrections.
+- Inversion des rôles à mi-parcours.
 
-```bash
+---
+
+## 2. Créer une branche de fonctionnalité
+```
 git checkout -b feature/<amelioration>
 ```
 
-Exemples de noms :  
-- `feature/correction-status-code`  
-- `feature/validation-products`  
-- `feature/clean-duplicate-code`
+Exemples :
+- `feature/correction-status-code`
+- `feature/validation-products`
 
 ---
 
-#  4. Analyse du code (obligatoire)
-
-Dans le dépôt se trouvent volontairement :
-
+## 3. Analyse du code
+Identifier une amélioration parmi :
 - codes HTTP incorrects  
-- duplications de logique  
-- manque de validations  
-- messages d’erreurs incohérents  
-- structure imparfaite des routes  
-- absence de middleware d’erreurs  
+- validations manquantes  
+- duplications  
+- incohérences dans les routes  
+- absence de middleware d’erreur  
 
-**Votre but : choisir UNE amélioration simple et ciblée.**
-
----
-
-#  5. Amélioration à effectuer (Auteur)
-
-Réaliser UNE amélioration, par exemple :
-
-### ✔ Ajout d’une validation
-Ex : vérifier qu’un produit a bien un `name`.
-
-### ✔ Correction d’un code HTTP
-Ex : changer un `500` en `404`, un `200` en `201`, etc.
-
-### ✔ Refactorisation d’une duplication
-Ex : extraire une fonction commune.
-
-### ✔ Correction d’une mauvaise logique
-Ex : erreur dans `/categories/:id`.
-
->  **Eviter les gros changements : privilégier une PR simple et propre.**
+➡️ **Choisir UNE amélioration simple.**
 
 ---
 
-#  6. Commit + Push
+## 4. Réalisation de l’amélioration
+- Effectuer l'amélioration sans modifier l'ensemble du projet.
+- Garder une PR propre et lisible.
 
-```bash
+---
+
+## 5. Commit & Push
+```
 git add .
-git commit -m "Correction du code HTTP pour GET /products/:id"
+git commit -m "Description de l'amélioration"
 git push origin feature/<amelioration>
 ```
 
 ---
 
-#  7. Création de la Pull Request
-
+## 6. Création de la Pull Request
 Sur GitHub :
+- Aller dans **Pull Requests**
+- **New Pull Request**
+- Base : `main`
+- Compare : `feature/<amelioration>`
 
-1. Aller dans **Pull Requests**  
-2. Cliquer sur **New Pull Request**  
-3. Base : `main`  
-   Compare : `feature/<amelioration>`  
-4. Remplir :
-   - **Titre clair**
-   - **Description complète**
-   - Pourquoi cette correction ?
-   - Comment la tester ?
-5. Assigner votre reviewer
+Inclure :
+- Titre clair  
+- Description complète  
+- Justification  
+- Instructions de test
+
+Assigner le reviewer.
 
 ---
 
-#  8. Revue de code (Reviewer)
+## 7. Revue de code (Reviewer)
+Vérifier :
+- logique  
+- cohérence  
+- style  
+- absence de bugs  
+- bonnes pratiques Git  
 
-Le reviewer doit vérifier :
-
-- la logique  
-- la cohérence  
-- le style  
-- l’absence de bug  
-- la bonne pratique Git  
-
-Et ajouter :
-
+Ajouter :
 - commentaires  
 - suggestions  
-- demandes de correction si nécessaire
-
-Faire preuve de **bienveillance + exigence**.
+- demandes de correction  
 
 ---
 
-#  9. Corrections (Auteur)
-
+## 8. Corrections
 L’auteur applique les retours :
-
-```bash
+```
 git add .
-git commit -m "Corrections suite aux commentaires"
+git commit -m "Corrections suite à review"
 git push
 ```
 
@@ -158,65 +184,38 @@ La PR se met à jour automatiquement.
 
 ---
 
-#  10. Validation & Merge
-
-Quand la PR est approuvée :
-
-- cliquer **Merge Pull Request**  
+## 9. Merge
+Lorsque validé :
+- **Merge Pull Request**
 - supprimer la branche (optionnel)
 
 ---
 
-#  11. Inversion des rôles
-
-Le reviewer devient Auteur.  
-L’Auteur devient Reviewer.
-
-Refaire les étapes **3 à 10** avec une autre amélioration.
+## 10. Inversion des rôles
+- Le reviewer devient auteur.
+- Nouvelle fonctionnalité.
+- Nouvelle PR / review.
 
 ---
 
-#  12. Mini-TP Python — Écriture de tests
+#  PARTIE 3 — Mini-TP Python : Tests
 
-Créer un fichier `operations.py` :
+## 1. Créer `operations.py`
+Contenant 3 fonctions :
+- addition
+- maximum
+- format_nom
 
-```python
-def addition(a, b):
-    return a + b
+## 2. Créer `test.py`
+Écrire des tests unitaires simples.
 
-def maximum(a, b):
-    return a if a > b else b
-
-def format_nom(prenom, nom):
-    return f"{prenom.capitalize()} {nom.upper()}"
+## 3. Lancer les tests
 ```
-
-Créer un fichier `test.py` :
-
-```python
-from operations import addition, maximum, format_nom
-
-def test_addition():
-    assert addition(2, 3) == 5
-
-def test_maximum():
-    assert maximum(10, 4) == 10
-
-def test_format_nom():
-    assert format_nom("luc", "martin") == "Luc MARTIN"
-
-print("Tous les tests sont passés !")
-```
-
-Lancer les tests :
-
-```bash
 python test.py
 ```
 
-Créer une PR contenant les tests Python :
-
-```bash
+## 4. Créer une PR dédiée
+```
 git checkout -b feature/tests-python
 git add .
 git commit -m "Ajout des tests Python"
@@ -224,7 +223,4 @@ git push origin feature/tests-python
 ```
 
 ---
-
-
-
 
